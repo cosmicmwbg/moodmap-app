@@ -17,7 +17,7 @@ st.set_page_config(
     layout="wide"
 )
 
-MODEL_ID = "sbiii555494/moodmap-distilbert-v5" # <-- Updated to V5
+MODEL_ID = "sbiii555494/moodmap-distilbert-v6" # <-- Updated to V6
 MAX_LENGTH = 128
 
 EMOTION_ICONS = {
