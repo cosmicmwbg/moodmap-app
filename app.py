@@ -3,12 +3,9 @@ import streamlit as st
 import torch
 import pandas as pd
 
-from transformers.models.distilbert.tokenization_distilbert_fast import (
-    DistilBertTokenizerFast
-)
-
-from transformers.models.distilbert.modeling_distilbert import (
-    DistilBertForSequenceClassification
+from transformers import (
+    AutoTokenizer,
+    AutoModelForSequenceClassification
 )
 # ==========================================
 # 1. APPLICATION CONFIGURATION
@@ -20,7 +17,7 @@ st.set_page_config(
     layout="wide"
 )
 
-MODEL_ID = "sbiii555494/moodmap-distilbert"
+MODEL_ID = "sbiii555494/moodmap-distilbert-v3"
 MAX_LENGTH = 128
 
 EMOTION_ICONS = {
@@ -84,13 +81,9 @@ def load_model():
 
     torch.set_num_threads(2)
 
-    tokenizer = DistilBertTokenizerFast.from_pretrained(
-        MODEL_ID
-    )
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 
-    model = DistilBertForSequenceClassification.from_pretrained(
-        MODEL_ID
-    )
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
 
     model.eval()
 
@@ -300,9 +293,11 @@ with st.sidebar:
 
     st.write("**Architecture:** DistilBERT")
 
+    st.write("**Model Version:** V3")
+
     st.write("**Classes:** 6 emotions")
 
-    st.write("**Training Samples:** 16,000")
+    st.write("**Training Samples:** 16,480")
 
     st.write("**Testing Samples:** 2,000")
 
@@ -310,9 +305,9 @@ with st.sidebar:
 
     st.subheader("Test Performance")
 
-    st.metric("Test Accuracy", "91.45%")
+    st.metric("Test Accuracy", "92.25%")
 
-    st.metric("Macro F1-Score", "86.32%")
+    st.metric("Macro F1-Score", "87.35%")
 
     st.divider()
 
