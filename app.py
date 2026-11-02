@@ -3,11 +3,13 @@ import streamlit as st
 import torch
 import pandas as pd
 
-from transformers import (
-    AutoTokenizer,
-    AutoModelForSequenceClassification
+from transformers.models.distilbert.tokenization_distilbert_fast import (
+    DistilBertTokenizerFast
 )
 
+from transformers.models.distilbert.modeling_distilbert import (
+    DistilBertForSequenceClassification
+)
 # ==========================================
 # 1. APPLICATION CONFIGURATION
 # ==========================================
@@ -82,11 +84,11 @@ def load_model():
 
     torch.set_num_threads(2)
 
-    tokenizer = AutoTokenizer.from_pretrained(
+    tokenizer = DistilBertTokenizerFast.from_pretrained(
         MODEL_ID
     )
 
-    model = AutoModelForSequenceClassification.from_pretrained(
+    model = DistilBertForSequenceClassification.from_pretrained(
         MODEL_ID
     )
 
