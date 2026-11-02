@@ -294,7 +294,7 @@ with st.sidebar:
     
     st.write("**Architecture:** DistilBERT")
     
-    st.write("**Model Version:** V5 (Includes Negation Handling)") # <-- Updated
+    st.write("**Model Version:** V6 (Includes Negation Handling)") # <-- Updated
     
     st.write("**Classes:** 7 emotions (added 'neutral')")          # <-- Updated
     
