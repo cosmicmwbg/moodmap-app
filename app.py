@@ -17,7 +17,7 @@ st.set_page_config(
     layout="wide"
 )
 
-MODEL_ID = "sbiii555494/moodmap-distilbert-v3"
+MODEL_ID = "sbiii555494/moodmap-distilbert-v5" # <-- Updated to V5
 MAX_LENGTH = 128
 
 EMOTION_ICONS = {
@@ -26,7 +26,8 @@ EMOTION_ICONS = {
     "love": "❤️",
     "anger": "😡",
     "fear": "😨",
-    "surprise": "😲"
+    "surprise": "😲",
+    "neutral": "😐" # <-- Added neutral icon
 }
 
 # ==========================================
@@ -290,14 +291,14 @@ with st.sidebar:
     st.divider()
 
     st.subheader("Model Information")
-
+    
     st.write("**Architecture:** DistilBERT")
-
-    st.write("**Model Version:** V3")
-
-    st.write("**Classes:** 6 emotions")
-
-    st.write("**Training Samples:** 16,480")
+    
+    st.write("**Model Version:** V5 (Includes Negation Handling)") # <-- Updated
+    
+    st.write("**Classes:** 7 emotions (added 'neutral')")          # <-- Updated
+    
+    st.write("**Training Samples:** 16,600+")                      # <-- Updated
 
     st.write("**Testing Samples:** 2,000")
 
